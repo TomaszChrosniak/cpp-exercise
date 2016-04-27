@@ -86,6 +86,24 @@ The application should:
  * Print to stdout the running total
  * a command to display the command history
  * a command to undo
+ * a command to clear/restart
 
 Documentation on both the library and the console application should be
 included.
+
+## Building the boilerplate project
+
+### Linux
+
+The following commands will build on linux:
+
+```
+# mkdir build
+# cd build
+# cmake ../
+# make
+# make test
+```
+
+Note that the supplied Vagrantfile will build a linux VM and provision it for
+building the project.
