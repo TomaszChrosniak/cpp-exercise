@@ -10,7 +10,6 @@ well you manage to turn that solution into a working application.
 
 You need to:
 
- * Provide an estimate for when the work will be complete.
  * Produce working Object Orientated, unit-tested code.
  * Provide instructions on running and building your application.
  * Deliver the working application to your prospective employer.
@@ -24,7 +23,7 @@ you should be able to find information on the internet.
 
 There is no given time limit, however the test is designed to be short.  Please
 read the entire brief and then contact the person who gave you this assignment
-to provide an estimate.
+if you feel you are unable to complete the task in the allotted time frame.
 
 ## The Assignment
 
