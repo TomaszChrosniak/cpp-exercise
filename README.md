@@ -93,17 +93,54 @@ included.
 
 ## Building the boilerplate project
 
-### Linux
+### Linux / MacOS
 
 The following commands will build on linux:
 
 ```
-# mkdir build
-# cd build
-# cmake ../
-# make
-# make test
+mkdir build
+cd build
+cmake ../
+make
+make test
 ```
+
+This project requires googletest, googletest can be installed system-wide or
+locally, if installed locally set the `GTEST_ROOT` variable to the install
+location of googletest.
 
 Note that the supplied Vagrantfile will build a linux VM and provision it for
 building the project.
+
+### Windows
+
+There are various ways to build on windows.  This project has been tested using
+MS Visual Studio Express 2010.  Using other versions of Visual Studio and other
+Generators should work fine as well.
+
+Download and install CMake make sure it is in your PATH.
+
+Download and unpack Google Test to `c:\googletest`
+
+Build googletest from the `Visual Studio Command Prompt (2010)`:
+
+```
+cd c:\googletest
+cmake ./ -G "NMake Makefiles"
+nmake
+```
+
+The CMake variable `GTEST_ROOT` can be configured should googletest be installed
+in a different location.
+
+To build this project still from the `Visual Studio Command Prompt (2010)`:
+
+```
+cd c:\<location of this repo>
+mkdir build
+cd build
+cmake ../ -G "NMake Makefiles"
+nmake
+nmake test
+```
+
