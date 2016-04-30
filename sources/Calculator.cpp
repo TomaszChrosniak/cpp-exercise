@@ -2,13 +2,14 @@
 
 Calculator::Calculator()
 {
-	currentTotal = previousTotal = 0;
+	currentTotal = 0.0;
+	operationList.clear();
 }
 
 Calculator::Calculator(double initialVal)
 {
 	currentTotal = initialVal;
-	previousTotal = 0.0;
+	operationList.clear();
 }
 
 double Calculator::getCurrentTotal()
@@ -18,36 +19,45 @@ double Calculator::getCurrentTotal()
 
 double Calculator::addValue(double value)
 {
-	previousTotal = currentTotal;
-	return (currentTotal += value);
+	Operation* operation;
+	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::SUM, value))));
+	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::subtractValue(double value)
 {
-	previousTotal = currentTotal;
-	return (currentTotal -= value);
+	Operation* operation;
+	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value))));
+	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::multiplyBy(double value)
 {
-	previousTotal = currentTotal;
-	return (currentTotal *= value);
+	Operation* operation;
+	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value))));
+	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::divideBy(double value)
 {
-	previousTotal = currentTotal;
+	Operation* operation;
+	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::DIVISION, value))));
+	currentTotal = operation->perform(currentTotal);
 	if (!value)
 		throw DivisionByZeroException();
-	return (currentTotal /= value);
+	return currentTotal;
 }
 
 double Calculator::getPreviousTotal()
 {
-	return previousTotal;
+	return operationList.back().undo(currentTotal);
 }
 
 double Calculator::undo()
 {
-	return (currentTotal = previousTotal);
+	if (operationList.empty())
+		return currentTotal;
+	currentTotal = operationList.back().undo(currentTotal);
+	operationList.pop_back();
+	return currentTotal;
 }

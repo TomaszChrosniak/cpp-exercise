@@ -1,10 +1,13 @@
 #pragma once
 #include <exception>
+#include <vector>
+
+#include <Operation.h>
 
 class Calculator
 {
 private:
-	double currentTotal, previousTotal;
+	double currentTotal;
 
 public:
 	class DivisionByZeroException : public std::exception
@@ -16,8 +19,10 @@ public:
 		}
 	};
 
-	Calculator();
+	std::vector<Operation> operationList;
 
+	Calculator();
+	
 	Calculator(double initialValue);
 
 	double getCurrentTotal();
