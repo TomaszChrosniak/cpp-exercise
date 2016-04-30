@@ -183,3 +183,13 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCorrectlyUndoes
 	ASSERT_EQ(runningTotal, calc->getCurrentTotal());
 }
 
+TEST_F(CalculatorTest, givenInitialValueWhenNoOperationsPerformedUndoDoesNothing)
+{
+	double runningTotal = 2.48;
+	CalculatorTest::createNewCalculator(runningTotal);
+	ASSERT_EQ(runningTotal, calc->undo());
+	ASSERT_EQ(runningTotal, calc->undo());
+	ASSERT_EQ(runningTotal, calc->undo());
+	ASSERT_EQ(runningTotal, calc->undo());
+	ASSERT_EQ(runningTotal, calc->undo());
+}
