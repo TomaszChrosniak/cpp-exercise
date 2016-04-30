@@ -29,6 +29,26 @@ TEST_F(CalculatorTest, givenInitialValueWhenAddingValueCalculatorCorrectlySumsIn
 	ASSERT_EQ(runningTotal, calc->addValue(valueAdded));
 }
 
+TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlySubtracts)
+{
+	double valueSubtracted = 3.78, runningTotal = calc->getCurrentTotal() - valueSubtracted;
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+	runningTotal -= (valueSubtracted = 0.45);
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+	runningTotal -= (valueSubtracted = -0.21);
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+}
+
+TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlySubtractsInts)
+{
+	double valueSubtracted = 3, runningTotal = calc->getCurrentTotal() - valueSubtracted;
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+	runningTotal -= (valueSubtracted = 1);
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+	runningTotal -= (valueSubtracted = -4);
+	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
+}
+
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);

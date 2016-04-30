@@ -20,3 +20,8 @@ double Calculator::addValue(double value)
 {
 	return (currentTotal += value);
 }
+
+double Calculator::subtractValue(double value)
+{
+	return (currentTotal -= value);
+}

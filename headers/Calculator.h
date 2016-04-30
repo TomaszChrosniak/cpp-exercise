@@ -12,5 +12,7 @@ public:
 
 	double getCurrentTotal();
 
-	double addValue(double value);
+	double addValue(const double value);
+
+	double subtractValue(const double value);
 };
