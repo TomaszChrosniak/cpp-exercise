@@ -87,11 +87,28 @@ TEST_F(CalculatorTest, givenInitialValueWhenDividingValueCalculatorCorrectlyDivi
 	ASSERT_EQ(runningTotal, calc->divideBy(divisor));
 }
 
-TEST_F(CalculatorTest, givenInitialValueWhenDividingByZeroCalculatorThrowsAnError)
+TEST_F(CalculatorTest, givenInitialValueWhenDividingByZeroCalculatorThrowsAnException)
 {
 	CalculatorTest::createNewCalculator(4.506);
 	ASSERT_THROW(calc->divideBy(0), Calculator::DivisionByZeroException);
 	ASSERT_NO_THROW(calc->divideBy(3));
+}
+
+TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValue)
+{
+	double operationValue = 3.78,
+		previousTotal = calc->getCurrentTotal(),
+		runningTotal = calc->addValue(operationValue);
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+	previousTotal = runningTotal;
+	runningTotal = calc->subtractValue(operationValue = 0.5);
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+	previousTotal = runningTotal;
+	runningTotal = calc->multiplyBy(operationValue = 1.2);
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+	previousTotal = runningTotal;
+	runningTotal = calc->divideBy(operationValue = 3);
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 }
 
 int main(int argc, char **argv)

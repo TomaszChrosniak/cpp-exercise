@@ -29,4 +29,6 @@ public:
 	double multiplyBy(const double value);
 
 	double divideBy(const double value);
+
+	double getPreviousTotal();
 };

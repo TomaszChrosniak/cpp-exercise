@@ -18,22 +18,31 @@ double Calculator::getCurrentTotal()
 
 double Calculator::addValue(double value)
 {
+	previousTotal = currentTotal;
 	return (currentTotal += value);
 }
 
 double Calculator::subtractValue(double value)
 {
+	previousTotal = currentTotal;
 	return (currentTotal -= value);
 }
 
 double Calculator::multiplyBy(double value)
 {
+	previousTotal = currentTotal;
 	return (currentTotal *= value);
 }
 
 double Calculator::divideBy(double value)
 {
+	previousTotal = currentTotal;
 	if (!value)
 		throw DivisionByZeroException();
 	return (currentTotal /= value);
+}
+
+double Calculator::getPreviousTotal()
+{
+	return previousTotal;
 }
