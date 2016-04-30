@@ -62,7 +62,7 @@ Efforts should be made maintain support for the following platforms:
 
 We do not expect that you may have access to all of the OS platforms listed
 above.  Should you be unable to test on all of the above platforms make a note
-of this fact here: [modify this]
+of this fact here: MacOS
 
 The goal of this exercise is to produce a reusable library which provides basic
 calculator functions.
