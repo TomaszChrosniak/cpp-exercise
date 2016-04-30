@@ -33,5 +33,7 @@ double Calculator::multiplyBy(double value)
 
 double Calculator::divideBy(double value)
 {
+	if (!value)
+		throw DivisionByZeroException();
 	return (currentTotal /= value);
 }

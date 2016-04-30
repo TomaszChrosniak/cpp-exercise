@@ -87,6 +87,13 @@ TEST_F(CalculatorTest, givenInitialValueWhenDividingValueCalculatorCorrectlyDivi
 	ASSERT_EQ(runningTotal, calc->divideBy(divisor));
 }
 
+TEST_F(CalculatorTest, givenInitialValueWhenDividingByZeroCalculatorThrowsAnError)
+{
+	CalculatorTest::createNewCalculator(4.506);
+	ASSERT_THROW(calc->divideBy(0), Calculator::DivisionByZeroException);
+	ASSERT_NO_THROW(calc->divideBy(3));
+}
+
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
