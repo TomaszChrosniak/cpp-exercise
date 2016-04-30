@@ -231,3 +231,9 @@ TEST_F(CalculatorTest, afterPerformingOperationsWhenClearIssuedCalculatorCleared
 	ASSERT_EQ(0.0, calc->getCurrentTotal());
 	ASSERT_EQ(0.0, calc->getPreviousTotal());
 }
+
+TEST_F(CalculatorTest, whenNoOperationsPerformedGetPreviousValueReturnsCurrentValue)
+{
+	CalculatorTest::createNewCalculator(12.456);
+	ASSERT_EQ(12.456, calc->getPreviousTotal());
+}
