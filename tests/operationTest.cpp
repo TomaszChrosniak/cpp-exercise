@@ -119,7 +119,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivisionByZero)
 
 TEST(OperationTest, givenAnOperationWhenConvertingToStringBehavesCorrectly)
 {
-	double runningTotal = -10.21, operationValue = 4.215;
+	double operationValue = 4.215;
 	Operation* oper = new Operation(Operation::OPERATION_TYPE::DIVISION, operationValue);
 	ASSERT_EQ("/4.215\n", oper->toString());
 	delete oper;
