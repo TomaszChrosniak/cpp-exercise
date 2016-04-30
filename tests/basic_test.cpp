@@ -96,28 +96,39 @@ TEST_F(CalculatorTest, givenInitialValueWhenDividingByZeroCalculatorThrowsAnExce
 
 TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValue)
 {
-	double operationValue = 3.78,
-		previousTotal = calc->getCurrentTotal(),
-		runningTotal = calc->addValue(operationValue);
+	double previousTotal = calc->getCurrentTotal(),
+		runningTotal = calc->addValue(3.78);
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 	previousTotal = runningTotal;
-	runningTotal = calc->subtractValue(operationValue = 0.5);
+	runningTotal = calc->subtractValue(0.5);
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 	previousTotal = runningTotal;
-	runningTotal = calc->multiplyBy(operationValue = 1.2);
+	runningTotal = calc->multiplyBy(1.2);
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 	previousTotal = runningTotal;
-	runningTotal = calc->divideBy(operationValue = 3);
+	runningTotal = calc->divideBy(3);
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 }
 
 TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValueWhenDividingByZero)
 {
-	double operationValue = 3.78,
-		runningTotal = calc->addValue(operationValue),
+	double runningTotal = calc->addValue(3.78),
 		previousTotal = runningTotal;
 	ASSERT_ANY_THROW(calc->divideBy(0.0));
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+}
+
+TEST_F(CalculatorTest, afterPerformingOperationsAndUndoingOneTheCurrentTotalIsCorrect)
+{
+	double runningTotal = calc->addValue(3.78),
+		previousTotal = runningTotal,
+		operationValue = 4.21;
+	runningTotal *= operationValue;
+	ASSERT_EQ(runningTotal, calc->multiplyBy(operationValue));
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+	ASSERT_NE(previousTotal, calc->getCurrentTotal());
+	calc->undo();
+	ASSERT_EQ(previousTotal, calc->getCurrentTotal());
 }
 
 int main(int argc, char **argv)

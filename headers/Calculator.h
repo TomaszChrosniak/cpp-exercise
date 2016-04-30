@@ -31,4 +31,6 @@ public:
 	double divideBy(const double value);
 
 	double getPreviousTotal();
+
+	double undo();
 };

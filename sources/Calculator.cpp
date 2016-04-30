@@ -46,3 +46,8 @@ double Calculator::getPreviousTotal()
 {
 	return previousTotal;
 }
+
+double Calculator::undo()
+{
+	return (currentTotal = previousTotal);
+}
