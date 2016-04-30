@@ -111,6 +111,15 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHolds
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 }
 
+TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValueWhenDividingByZero)
+{
+	double operationValue = 3.78,
+		runningTotal = calc->addValue(operationValue),
+		previousTotal = runningTotal;
+	ASSERT_ANY_THROW(calc->divideBy(0.0));
+	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
+}
+
 int main(int argc, char **argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
