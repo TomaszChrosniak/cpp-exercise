@@ -193,3 +193,26 @@ TEST_F(CalculatorTest, givenInitialValueWhenNoOperationsPerformedUndoDoesNothing
 	ASSERT_EQ(runningTotal, calc->undo());
 	ASSERT_EQ(runningTotal, calc->undo());
 }
+
+TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsReturnsCorrectString)
+{
+	calc->addValue(3.78);
+	calc->subtractValue(0.5);
+	calc->multiplyBy(1.2);
+	ASSERT_ANY_THROW(calc->divideBy(0));
+	calc->divideBy(3);
+	ASSERT_EQ("0\n+3.78\n-0.5\n*1.2\n/3\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n+3.78\n-0.5\n*1.2\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n+3.78\n-0.5\n*1.2\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n+3.78\n-0.5\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n+3.78\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n", calc->getOperationsString());
+	calc->undo();
+	ASSERT_EQ("0\n", calc->getOperationsString());
+	calc->undo();
+}

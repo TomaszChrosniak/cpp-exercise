@@ -116,3 +116,23 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivisionByZero)
 	ASSERT_EQ(runningTotal, oper->undo(runningTotal));
 	delete oper;
 }
+
+TEST(OperationTest, givenAnOperationWhenConvertingToStringBehavesCorrectly)
+{
+	double runningTotal = -10.21, operationValue = 4.215;
+	Operation* oper = new Operation(Operation::OPERATION_TYPE::DIVISION, operationValue);
+	ASSERT_EQ("/4.215\n", oper->toString());
+	delete oper;
+	oper = new Operation(Operation::OPERATION_TYPE::MULTIPLICATION, operationValue = 2.01);
+	ASSERT_EQ("*2.01\n", oper->toString());
+	delete oper;
+	oper = new Operation(Operation::OPERATION_TYPE::SUM, 0.00015);
+	ASSERT_EQ("+0.00015\n", oper->toString());
+	delete oper;
+	oper = new Operation(Operation::OPERATION_TYPE::SUBTRACTION, 0.0001);
+	ASSERT_EQ("-0.0001\n", oper->toString());
+	delete oper;
+	oper = new Operation(Operation::OPERATION_TYPE::DIVISION, 0.0000);
+	ASSERT_EQ("", oper->toString());
+	delete oper;
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include <exception>
 #include <vector>
+#include <string>
+#include <sstream>
 
 #include <Operation.h>
 
@@ -8,6 +10,8 @@ class Calculator
 {
 private:
 	double currentTotal;
+
+	std::stringstream initialStringStream;
 
 public:
 	class DivisionByZeroException : public std::exception
@@ -38,4 +42,6 @@ public:
 	double getPreviousTotal();
 
 	double undo();
+
+	std::string getOperationsString();
 };

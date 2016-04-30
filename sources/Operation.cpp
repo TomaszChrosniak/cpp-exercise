@@ -46,3 +46,27 @@ double Operation::undo(double currentValue)
 		return currentValue;
 	}
 }
+
+std::string Operation::toString()
+{
+	std::stringstream outputStream;
+	switch (operationType)
+	{
+	case SUM:
+		outputStream << "+" << operationValue << std::endl;
+		return outputStream.str();
+	case SUBTRACTION:
+		outputStream << "-" << operationValue << std::endl;
+		return outputStream.str();
+	case MULTIPLICATION:
+		outputStream << "*" << operationValue << std::endl;
+		return outputStream.str();
+	case DIVISION:
+		outputStream << "/" << operationValue << std::endl;
+		return outputStream.str();
+	case ERROR:
+		return "";
+	default:
+		return "";
+	}
+}

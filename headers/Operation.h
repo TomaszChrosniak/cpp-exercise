@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <sstream>
 
 class Operation
 {
@@ -20,4 +22,5 @@ public:
 
 	double perform(const double);
 	double undo(const double);
+	std::string toString();
 };
