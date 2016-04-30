@@ -25,3 +25,13 @@ double Calculator::subtractValue(double value)
 {
 	return (currentTotal -= value);
 }
+
+double Calculator::multiplyBy(double value)
+{
+	return (currentTotal *= value);
+}
+
+double Calculator::divideBy(double value)
+{
+	return (currentTotal /= value);
+}
