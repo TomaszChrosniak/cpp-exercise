@@ -22,3 +22,9 @@ void CalculatorTest::TearDown()
 	delete calc;
 	calc = NULL;
 }
+
+void CalculatorTest::createNewCalculator(double initialValue)
+{
+	delete calc;
+	calc = new Calculator(initialValue);
+}

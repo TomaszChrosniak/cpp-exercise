@@ -2,11 +2,16 @@
 
 Calculator::Calculator()
 {
-	currentValue = previousValue = 0;
+	currentTotal = previousTotal = 0;
 }
 
 Calculator::Calculator(double initialVal)
 {
-	currentValue = initialVal;
-	previousValue = 0.0;
+	currentTotal = initialVal;
+	previousTotal = 0.0;
+}
+
+double Calculator::getCurrentTotal()
+{
+	return currentTotal;
 }

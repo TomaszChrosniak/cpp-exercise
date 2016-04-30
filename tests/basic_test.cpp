@@ -1,19 +1,12 @@
 #include <gtest/gtest.h>
 #include "calculatorTest.h"
 
-TEST(ExampleTest, IsTruthful)
+TEST_F(CalculatorTest, givenInitialValueCalculatorHoldsValue)
 {
-	EXPECT_TRUE(true);
-}
-
-TEST(ExampleTest, IsFalsey)
-{
-	EXPECT_FALSE(false);
-}
-
-TEST(ExampleTest, ThisOneFailsFixMe)
-{
-	EXPECT_TRUE(false);
+	double value = 0.0;
+	ASSERT_EQ(value, calc->getCurrentTotal());
+	CalculatorTest::createNewCalculator(value = 0.49);
+	ASSERT_EQ(value, calc->getCurrentTotal());
 }
 
 int main(int argc, char **argv)

@@ -19,5 +19,7 @@ protected:
 
 	virtual void TearDown();
 
+	static void createNewCalculator(double initialValue);
+
 	static Calculator* calc;
 };

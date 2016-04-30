@@ -3,11 +3,12 @@
 class Calculator
 {
 private:
-	double currentValue, previousValue;
+	double currentTotal, previousTotal;
 
 public:
 	Calculator();
 
 	Calculator(double initialValue);
 
+	double getCurrentTotal();
 };
