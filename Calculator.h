@@ -11,4 +11,6 @@ public:
 	Calculator(double initialValue);
 
 	double getCurrentTotal();
+
+	double addValue(double value);
 };

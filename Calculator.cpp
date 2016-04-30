@@ -15,3 +15,8 @@ double Calculator::getCurrentTotal()
 {
 	return currentTotal;
 }
+
+double Calculator::addValue(double value)
+{
+	return (currentTotal += value);
+}
