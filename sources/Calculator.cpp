@@ -3,6 +3,7 @@
 Calculator::Calculator()
 {
 	currentTotal = 0.0;
+	initialStringStream.str(std::string());
 	initialStringStream << currentTotal << std::endl;
 	operationList.clear();
 }
@@ -10,6 +11,7 @@ Calculator::Calculator()
 Calculator::Calculator(double initialVal)
 {
 	currentTotal = initialVal;
+	initialStringStream.str(std::string());
 	initialStringStream << currentTotal << std::endl;
 	operationList.clear();
 }
@@ -52,6 +54,8 @@ double Calculator::divideBy(double value)
 
 double Calculator::getPreviousTotal()
 {
+	if (operationList.empty())
+		return currentTotal;
 	return operationList.back().undo(currentTotal);
 }
 
@@ -70,4 +74,12 @@ std::string Calculator::getOperationsString()
 	for (auto it = operationList.begin(); it != operationList.end(); it++)
 		returnString.append(it->toString());
 	return returnString;
+}
+
+void Calculator::clear()
+{
+	currentTotal = 0.0;
+	initialStringStream.str(std::string());
+	initialStringStream << currentTotal << std::endl;
+	operationList.clear();
 }

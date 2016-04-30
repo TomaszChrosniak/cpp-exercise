@@ -44,4 +44,6 @@ public:
 	double undo();
 
 	std::string getOperationsString();
+
+	void clear();
 };

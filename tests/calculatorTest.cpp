@@ -216,3 +216,18 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsReturnsCorrectS
 	ASSERT_EQ("0\n", calc->getOperationsString());
 	calc->undo();
 }
+
+TEST_F(CalculatorTest, afterPerformingOperationsWhenClearIssuedCalculatorCleared)
+{
+	calc->addValue(3.78);
+	calc->subtractValue(0.5);
+	calc->multiplyBy(1.2);
+	ASSERT_ANY_THROW(calc->divideBy(0));
+	calc->divideBy(3);
+	ASSERT_EQ("0\n+3.78\n-0.5\n*1.2\n/3\n", calc->getOperationsString());
+	ASSERT_EQ(((3.78 - 0.5)*1.2 / 3), calc->getCurrentTotal());
+	calc->clear();
+	ASSERT_EQ("0\n", calc->getOperationsString());
+	ASSERT_EQ(0.0, calc->getCurrentTotal());
+	ASSERT_EQ(0.0, calc->getPreviousTotal());
+}
