@@ -23,6 +23,8 @@ double Operation::perform(double currentValue)
 		return currentValue / operationValue;
 	case ERROR:
 		return currentValue;
+	default:
+		return currentValue;
 	}
 }
 
@@ -39,6 +41,8 @@ double Operation::undo(double currentValue)
 	case DIVISION:
 		return currentValue * operationValue;
 	case ERROR:
+		return currentValue;
+	default:
 		return currentValue;
 	}
 }

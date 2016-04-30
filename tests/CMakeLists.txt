@@ -13,8 +13,15 @@ message(STATUS "${GTEST_MAIN_LIBRARIES} ${CMAKE_CURRENT_BINARY_DIR}")
 #include_directories("${CMAKE_SOURCE_DIR}/headers")
 #add_library(CalculatorLib ${CALC_H} ${CALC_S})
 
-set(TEST_SOURCES basic_test.cpp calculatorTest.h calculatorTest.cpp)
-add_executable(basic_test ${TEST_SOURCES})
+file(GLOB CALC_TEST_H
+	"${CMAKE_CURRENT_SOURCE_DIR}/*.h"
+)
+
+file(GLOB CALC_TEST_S
+	"${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+)
+
+add_executable(basic_test ${CALC_TEST_S} ${CALC_TEST_H})
 
 target_link_libraries(basic_test
 	Calculator
