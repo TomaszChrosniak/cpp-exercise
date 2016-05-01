@@ -2,6 +2,7 @@
 #include <Calculator.h>
 #include <string>
 #include <iomanip>
+#include <regex>
 
 using namespace std;
 
@@ -9,13 +10,15 @@ double value;
 
 int getValueFromCommandString(const int &offset, string &input,  int &numberOfCharsRead)
 {
-	std::locale loc;
-	std::ios::iostate state;
-	std::string::iterator end;
-	numberOfCharsRead = std::use_facet<std::num_get<char, std::string::iterator> >(loc).get(input.begin()+offset, input.end(), std::cin, state, value) - input.begin() - offset;
-	if (numberOfCharsRead > 0)
-		return 1;
-	return 0;
+	smatch stringMatches;
+	if(!regex_search(input.substr(offset, input.length() - offset), stringMatches, regex("^[\\d\\.]+")))
+	{
+		numberOfCharsRead = 0;
+		return 0;
+	}
+	value = stod(stringMatches.str());
+	numberOfCharsRead = stringMatches.str().length();
+	return 1;
 }
 
 int main(int argc, char **argv)
