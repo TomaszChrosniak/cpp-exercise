@@ -4,21 +4,26 @@
 This application takes the user input command/chain of commands, and performs them sequentially.
 The numeric arguments can be written in regular or scientific format.
 The commands should have the following format:
-+FLOATING_POINT_VALUE - performs an addition operation with the given FLOATING_POINT_VALUE
--FLOATING_POINT_VALUE - performs an subtraction operation with the given FLOATING_POINT_VALUE
-*FLOATING_POINT_VALUE - performs an multiplication operation with the given FLOATING_POINT_VALUE
-xFLOATING_POINT_VALUE - performs an multiplication operation with the given FLOATING_POINT_VALUE
-/FLOATING_POINT_VALUE - performs an division operation with the given FLOATING_POINT_VALUE
-h - displays the command history
-c - resets the calculator
-u - undoes the last operation
-q - exits the application
+
+- +FLOATING_POINT_VALUE - performs an addition operation with the given FLOATING_POINT_VALUE
+- -FLOATING_POINT_VALUE - performs an subtraction operation with the given FLOATING_POINT_VALUE
+- *FLOATING_POINT_VALUE - performs an multiplication operation with the given FLOATING_POINT_VALUE
+- xFLOATING_POINT_VALUE - performs an multiplication operation with the given FLOATING_POINT_VALUE
+- /FLOATING_POINT_VALUE - performs an division operation with the given FLOATING_POINT_VALUE
+- h - displays the command history
+- c - resets the calculator
+- u - undoes the last operation
+- q - exits the application
+
+
 
 If a number is provided without any of the listed arithmetic operators, the calculator resets,
 and the given value is added to the initial calculator value.
 
 The commands can be chained as follows:
+
 +12.4*2/4+8c12/4*3
+
 This will perform the operation in the order in which they were written in (it disregards the mathematical order of operations).
 In this example the result will be 9, because upon reaching the letter 'c', the calculator will reset.
 */

@@ -1,3 +1,6 @@
+/*! \file operationTest.cpp
+\brief This file holds all of the tests within the CalculatorTest fixture.
+*/
 #include "operationTest.h"
 
 /*! \brief Tests if the operation correctly adds values. */

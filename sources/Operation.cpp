@@ -1,4 +1,7 @@
 #include <Operation.h>
+/*! \file Operation.cpp
+\brief This file holds the definitions for the Operation class.
+ */
 
 Operation::Operation(const Operation::OPERATION_TYPE newOperationType, const double &newOperationValue)
 {

@@ -1,7 +1,7 @@
-#pragma once
-/*! \file CalculatorTest.h
+/*! \file calculatorTest.h
 \brief Holds the CalculatorTest fixture class.
 */
+#pragma once
 #include <gtest/gtest.h>
 #include <Calculator.h>
 

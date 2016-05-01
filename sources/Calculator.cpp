@@ -1,4 +1,7 @@
 #include <Calculator.h>
+/*! \file Calculator.cpp
+\brief This file holds the definitions for the Calculator class.
+ */
 
 Calculator::Calculator()
 {

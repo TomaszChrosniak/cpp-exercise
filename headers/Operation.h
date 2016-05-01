@@ -39,7 +39,7 @@ public:
 	/*! \brief The constructor.
 	
 	Constructor that requires specifying the member initial values.
-	\param[in] newOperationType the type of the operation performed, should be one of the values from \see{OPERATION_TYPE}
+	\param[in] newOperationType the type of the operation performed, should be one of the values from OPERATION_TYPE
 	\param[in] newOperandValue the operand value
 	*/
 	Operation(const OPERATION_TYPE newOperationType, const double &newOperandValue);
@@ -47,7 +47,7 @@ public:
 	/*! \brief Performs the operation on a value.
 	
 	This method performes the operation set for this instance with the given operand.
-	It also saves the given value in the \see{valueBeforeOperation} member.
+	It also saves the given value in the valueBeforeOperation member.
 	The return value is the calculated result.
 	In case of dividing by zero, no operation takes place, and the return value is equal to the given argument.
 	\param[in] currentValue the value on which the operation is to be performed
