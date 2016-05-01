@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <limits>
 
 #include <Operation.h>
 
@@ -17,7 +18,7 @@ public:
 	class DivisionByZeroException : public std::exception
 	{
 	public:
-		const char* what() const
+		virtual const char* what() const throw()
 		{
 			return "Division by 0.";
 		}

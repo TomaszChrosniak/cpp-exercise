@@ -1,5 +1,5 @@
 #pragma once
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 #include <Calculator.h>
 
 class CalculatorTest : public ::testing::Test {

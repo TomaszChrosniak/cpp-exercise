@@ -9,7 +9,7 @@ double value;
 
 int getValueFromCommandString(const int &offset, const string &input,  int &numberOfCharsRead)
 {
-	return sscanf_s(input.substr(offset, input.length() - offset).c_str(), "%lf%n", &value, &numberOfCharsRead);
+	return sscanf(input.substr(offset, input.length() - offset).c_str(), "%lf%n", &value, &numberOfCharsRead);
 }
 
 int main(int argc, char **argv)
