@@ -57,6 +57,7 @@ double Operation::performReverse(double currentValue)
 std::string Operation::toString()
 {
 	std::stringstream outputStream;
+	outputStream << std::setprecision(std::numeric_limits<double>::digits10 + 1);
 	switch (operationType)
 	{
 	case SUM:

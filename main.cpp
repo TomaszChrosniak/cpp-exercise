@@ -7,9 +7,15 @@ using namespace std;
 
 double value;
 
-int getValueFromCommandString(const int &offset, const string &input,  int &numberOfCharsRead)
+int getValueFromCommandString(const int &offset, string &input,  int &numberOfCharsRead)
 {
-	return sscanf(input.substr(offset, input.length() - offset).c_str(), "%lf%n", &value, &numberOfCharsRead);
+	std::locale loc;
+	std::ios::iostate state;
+	std::string::iterator end;
+	numberOfCharsRead = std::use_facet<std::num_get<char, std::string::iterator> >(loc).get(input.begin()+offset, input.end(), std::cin, state, value) - input.begin() - offset;
+	if (numberOfCharsRead > 0)
+		return 1;
+	return 0;
 }
 
 int main(int argc, char **argv)
