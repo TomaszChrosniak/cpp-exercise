@@ -2,6 +2,7 @@
 
 Operation::Operation(Operation::OPERATION_TYPE newOperationType, double newOperationValue)
 {
+	valueBeforeOperation = 0.0;
 	operationValue = newOperationValue;
 	if (!newOperationValue && newOperationType == DIVISION)
 		operationType = ERROR;
@@ -11,6 +12,7 @@ Operation::Operation(Operation::OPERATION_TYPE newOperationType, double newOpera
 
 double Operation::perform(double currentValue)
 {
+	valueBeforeOperation = currentValue;
 	switch (operationType)
 	{
 	case SUM:
@@ -29,6 +31,11 @@ double Operation::perform(double currentValue)
 }
 
 double Operation::undo(double currentValue)
+{
+	return valueBeforeOperation;
+}
+
+double Operation::performReverse(double currentValue)
 {
 	switch (operationType)
 	{

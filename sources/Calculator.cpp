@@ -24,28 +24,32 @@ double Calculator::getCurrentTotal()
 double Calculator::addValue(double value)
 {
 	Operation* operation;
-	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::SUM, value))));
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUM, value));
+	operation = &(operationList.back());
 	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::subtractValue(double value)
 {
 	Operation* operation;
-	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value))));
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value));
+	operation = &(operationList.back());
 	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::multiplyBy(double value)
 {
 	Operation* operation;
-	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value))));
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value));
+	operation = &(operationList.back());
 	return (currentTotal = operation->perform(currentTotal));
 }
 
 double Calculator::divideBy(double value)
 {
 	Operation* operation;
-	operationList.push_back(*(operation = &(Operation(Operation::OPERATION_TYPE::DIVISION, value))));
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::DIVISION, value));
+	operation = &(operationList.back());
 	currentTotal = operation->perform(currentTotal);
 	if (!value)
 		throw DivisionByZeroException();
