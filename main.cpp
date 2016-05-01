@@ -1,5 +1,5 @@
-#include <iostream>
 #include <Calculator.h>
+#include <iostream>
 #include <string>
 #include <iomanip>
 #include <regex>
