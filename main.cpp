@@ -11,7 +11,8 @@ double value;
 int getValueFromCommandString(const int &offset, string &input,  int &numberOfCharsRead)
 {
 	smatch stringMatches;
-	if(!regex_search(input.substr(offset, input.length() - offset), stringMatches, regex("^[\\d\\.]+")))
+	string truncatedInput = input.substr(offset, input.length() - offset);
+	if(!regex_search(truncatedInput, stringMatches, regex("^[\\d\\.]+")))
 	{
 		numberOfCharsRead = 0;
 		return 0;
