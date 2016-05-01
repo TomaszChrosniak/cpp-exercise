@@ -1,6 +1,6 @@
 #include <Operation.h>
 
-Operation::Operation(Operation::OPERATION_TYPE newOperationType, double newOperationValue)
+Operation::Operation(const Operation::OPERATION_TYPE newOperationType, const double &newOperationValue)
 {
 	valueBeforeOperation = 0.0;
 	operationValue = newOperationValue;
@@ -10,7 +10,7 @@ Operation::Operation(Operation::OPERATION_TYPE newOperationType, double newOpera
 		operationType = newOperationType;	
 }
 
-double Operation::perform(double currentValue)
+double Operation::perform(const double &currentValue)
 {
 	valueBeforeOperation = currentValue;
 	switch (operationType)
@@ -30,12 +30,12 @@ double Operation::perform(double currentValue)
 	}
 }
 
-double Operation::undo(double currentValue)
+double Operation::undo(const double &currentValue)
 {
 	return valueBeforeOperation;
 }
 
-double Operation::performReverse(double currentValue)
+double Operation::performReverse(const double &currentValue)
 {
 	switch (operationType)
 	{

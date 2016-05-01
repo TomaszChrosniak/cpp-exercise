@@ -8,7 +8,7 @@ Calculator::Calculator()
 	operationList.clear();
 }
 
-Calculator::Calculator(double initialVal)
+Calculator::Calculator(const double &initialVal)
 {
 	currentTotal = initialVal;
 	initialStringStream.str(std::string());
@@ -21,7 +21,7 @@ double Calculator::getCurrentTotal()
 	return currentTotal;
 }
 
-double Calculator::addValue(double value)
+double Calculator::addValue(const double &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUM, value));
@@ -29,7 +29,7 @@ double Calculator::addValue(double value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::subtractValue(double value)
+double Calculator::subtractValue(const double &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value));
@@ -37,7 +37,7 @@ double Calculator::subtractValue(double value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::multiplyBy(double value)
+double Calculator::multiplyBy(const double &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value));
@@ -45,7 +45,7 @@ double Calculator::multiplyBy(double value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::divideBy(double value)
+double Calculator::divideBy(const double &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::DIVISION, value));

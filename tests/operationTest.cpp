@@ -1,5 +1,6 @@
 #include "operationTest.h"
 
+/*! \brief Tests if the operation correctly adds values. */
 TEST(OperationTest, givenZeroValueOperationProperlySums)
 {
 	double runningTotal = 1.12, operationValue = 0.49;
@@ -12,6 +13,7 @@ TEST(OperationTest, givenZeroValueOperationProperlySums)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly undoes addition. */
 TEST(OperationTest, givenZeroValueOperationProperlyUndoesSum)
 {
 	double runningTotal = 1.12, operationValue = 0.49;
@@ -25,6 +27,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesSum)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly subtracts values. */
 TEST(OperationTest, givenZeroValueOperationProperlySubtracts)
 {
 	double runningTotal = -0.01, operationValue = 0.49;
@@ -37,6 +40,7 @@ TEST(OperationTest, givenZeroValueOperationProperlySubtracts)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly undoes subtraction. */
 TEST(OperationTest, givenZeroValueOperationProperlyUndoesSubtraction)
 {
 	double runningTotal = -0.01, operationValue = 0.49;
@@ -50,6 +54,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesSubtraction)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly multiplies by a value. */
 TEST(OperationTest, givenZeroValueOperationProperlyMultiplies)
 {
 	double runningTotal = 1.91, operationValue = 1.49;
@@ -62,6 +67,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyMultiplies)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly undoes multiplication. */
 TEST(OperationTest, givenZeroValueOperationProperlyUndoesMultiplication)
 {
 	double runningTotal = 1.91, operationValue = 1.49;
@@ -75,6 +81,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesMultiplication)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly divides by a value. */
 TEST(OperationTest, givenZeroValueOperationProperlyDivides)
 {
 	double runningTotal = -10.21, operationValue = 2.49;
@@ -87,6 +94,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyDivides)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly undoes division. */
 TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivision)
 {
 	double runningTotal = -10.21, operationValue = 2.49;
@@ -100,6 +108,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivision)
 	delete oper;
 }
 
+/*! \brief Tests if the operation returns the given value when trying to divide by zero. */
 TEST(OperationTest, givenZeroValueOperationIgnoresDividingByZero)
 {
 	double runningTotal = -10.21, operationValue = 0.0;
@@ -108,6 +117,7 @@ TEST(OperationTest, givenZeroValueOperationIgnoresDividingByZero)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly undoes division by zero. */
 TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivisionByZero)
 {
 	double runningTotal = -10.21, operationValue = 0.0;
@@ -117,6 +127,7 @@ TEST(OperationTest, givenZeroValueOperationProperlyUndoesDivisionByZero)
 	delete oper;
 }
 
+/*! \brief Tests if the operation correctly converts the opreator and value to string. */
 TEST(OperationTest, givenAnOperationWhenConvertingToStringBehavesCorrectly)
 {
 	double operationValue = 4.215;
