@@ -26,7 +26,7 @@ void CalculatorTest::TearDown()
 	calc = NULL;
 }
 
-void CalculatorTest::createNewCalculator(const double &initialValue)
+void CalculatorTest::createNewCalculator(const Number &initialValue)
 {
 	delete calc;
 	calc = new Calculator(initialValue);
@@ -44,7 +44,7 @@ TEST_F(CalculatorTest, givenInitialValueCalculatorHoldsValue)
 /*! \brief Tests if the calculator correctly sums. */
 TEST_F(CalculatorTest, givenInitialValueWhenAddingValueCalculatorCorrectlySums)
 {
-	double valueAdded = 3.78, runningTotal = valueAdded + calc->getCurrentTotal();
+	Number valueAdded = 3.78, runningTotal = valueAdded + calc->getCurrentTotal();
 	ASSERT_EQ(runningTotal, calc->addValue(valueAdded));
 	runningTotal += (valueAdded = 0.45);
 	ASSERT_EQ(runningTotal, calc->addValue(valueAdded));
@@ -55,7 +55,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenAddingValueCalculatorCorrectlySums)
 /*! \brief Tests if the calculator correctly sums. */
 TEST_F(CalculatorTest, givenInitialValueWhenAddingValueCalculatorCorrectlySumsInts)
 {
-	int valueAdded = 3, runningTotal = valueAdded + (int)calc->getCurrentTotal();
+	Number valueAdded = 3, runningTotal = valueAdded + calc->getCurrentTotal();
 	ASSERT_EQ(runningTotal, calc->addValue(valueAdded));
 	runningTotal += (valueAdded = 1);
 	ASSERT_EQ(runningTotal, calc->addValue(valueAdded));
@@ -66,7 +66,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenAddingValueCalculatorCorrectlySumsIn
 /*! \brief Tests if the calculator correctly subtracts. */
 TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlySubtracts)
 {
-	double valueSubtracted = 3.78, runningTotal = calc->getCurrentTotal() - valueSubtracted;
+	Number valueSubtracted = 3.78, runningTotal = calc->getCurrentTotal() - valueSubtracted;
 	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
 	runningTotal -= (valueSubtracted = 0.45);
 	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
@@ -77,7 +77,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlyS
 /*! \brief Tests if the calculator correctly subtracts. */
 TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlySubtractsInts)
 {
-	int valueSubtracted = 3, runningTotal = calc->getCurrentTotal() - valueSubtracted;
+	Number valueSubtracted = 3, runningTotal = calc->getCurrentTotal() - valueSubtracted;
 	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
 	runningTotal -= (valueSubtracted = 1);
 	ASSERT_EQ(runningTotal, calc->subtractValue(valueSubtracted));
@@ -88,7 +88,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenSubtractingValueCalculatorCorrectlyS
 /*! \brief Tests if the calculator correctly multiplies. */
 TEST_F(CalculatorTest, givenInitialValueWhenMultiplyingValueCalculatorCorrectlyMultiplies)
 {
-	double factor = 3.78, runningTotal = calc->addValue(1.0) * factor;
+	Number factor = 3.78, runningTotal = calc->addValue(1.0) * factor;
 	ASSERT_EQ(runningTotal, calc->multiplyBy(factor));
 	runningTotal *= (factor = 0.45);
 	ASSERT_EQ(runningTotal, calc->multiplyBy(factor));
@@ -99,7 +99,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenMultiplyingValueCalculatorCorrectlyM
 /*! \brief Tests if the calculator correctly multiplies. */
 TEST_F(CalculatorTest, givenInitialValueWhenMultiplyingValueCalculatorCorrectlyMultipliesInts)
 {
-	int factor = 3, runningTotal = calc->addValue(1) * factor;
+	Number factor = 3, runningTotal = calc->addValue(1) * factor;
 	ASSERT_EQ(runningTotal, calc->multiplyBy(factor));
 	runningTotal *= (factor = 1);
 	ASSERT_EQ(runningTotal, calc->multiplyBy(factor));
@@ -119,7 +119,7 @@ TEST_F(CalculatorTest, givenInitialZeroAsValueWhenMultiplyingValueCalculatorCorr
 /*! \brief Tests if the calculator correctly divides. */
 TEST_F(CalculatorTest, givenInitialValueWhenDividingValueCalculatorCorrectlyDivides)
 {
-	double divisor = 3.78, runningTotal = calc->addValue(1.0) / divisor;
+	Number divisor = 3.78, runningTotal = calc->addValue(1.0) / divisor;
 	ASSERT_EQ(runningTotal, calc->divideBy(divisor));
 	runningTotal /= (divisor = 0.45);
 	ASSERT_EQ(runningTotal, calc->divideBy(divisor));
@@ -138,7 +138,7 @@ TEST_F(CalculatorTest, givenInitialValueWhenDividingByZeroCalculatorThrowsAnExce
 /*! \brief Tests if the calculator correctly gives the previous totals before the last operation. */
 TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValue)
 {
-	double previousTotal = calc->getCurrentTotal(),
+	Number previousTotal = calc->getCurrentTotal(),
 		runningTotal = calc->addValue(3.78);
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
 	previousTotal = runningTotal;
@@ -155,7 +155,7 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHolds
 /*! \brief Tests if the calculator reverts to the correct value after dividing by zero. */
 TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHoldsItsPreviousValueWhenDividingByZero)
 {
-	double runningTotal = calc->addValue(3.78),
+	Number runningTotal = calc->addValue(3.78),
 		previousTotal = runningTotal;
 	ASSERT_ANY_THROW(calc->divideBy(0.0));
 	ASSERT_EQ(previousTotal, calc->getPreviousTotal());
@@ -164,7 +164,7 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCalculatorHolds
 /*! \brief Tests if the calculator reverts to the correct value after undoing one of many operations. */
 TEST_F(CalculatorTest, afterPerformingOperationsAndUndoingOneTheCurrentTotalIsCorrect)
 {
-	double runningTotal = calc->addValue(3.78),
+	Number runningTotal = calc->addValue(3.78),
 		previousTotal = runningTotal,
 		operationValue = 4.21;
 	runningTotal *= operationValue;
@@ -178,12 +178,12 @@ TEST_F(CalculatorTest, afterPerformingOperationsAndUndoingOneTheCurrentTotalIsCo
 /*! \brief Tests if the calculator correctly undoes consecutive operations. */
 TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCorrectlyUndoes)
 {
-	double operation1, operation2, operation3, operation4,
+	Number operation1(3.78), operation2(0.5), operation3(1.2), operation4(3),
 		previousTotal = calc->getCurrentTotal(),
-		runningTotal = calc->addValue(operation1 = 3.78);
-	runningTotal = calc->subtractValue(operation2 = 0.5);
-	runningTotal = calc->multiplyBy(operation3 = 1.2);
-	runningTotal = calc->divideBy(operation4 = 3);
+		runningTotal = calc->addValue(operation1);
+	runningTotal = calc->subtractValue(operation2);
+	runningTotal = calc->multiplyBy(operation3);
+	runningTotal = calc->divideBy(operation4);
 	ASSERT_EQ(runningTotal, calc->getCurrentTotal());
 	calc->undo();
 	runningTotal *= operation4;
@@ -202,7 +202,7 @@ TEST_F(CalculatorTest, givenInitialValueAfterPerformingOperationsCorrectlyUndoes
 /*! \brief Tests if the calculator handles undoing, after no operations have been performed. */
 TEST_F(CalculatorTest, givenInitialValueWhenNoOperationsPerformedUndoDoesNothing)
 {
-	double runningTotal = 2.48;
+	Number runningTotal = 2.48;
 	CalculatorTest::createNewCalculator(runningTotal);
 	ASSERT_EQ(runningTotal, calc->undo());
 	ASSERT_EQ(runningTotal, calc->undo());

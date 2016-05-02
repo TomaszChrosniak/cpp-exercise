@@ -3,7 +3,7 @@
 \brief This file holds the definitions for the Calculator class.
  */
 
-Calculator::Calculator()
+Calculator::Calculator() : currentTotal(0.0)
 {
 	currentTotal = 0.0;
 	initialStringStream.str(std::string());
@@ -11,7 +11,7 @@ Calculator::Calculator()
 	operationList.clear();
 }
 
-Calculator::Calculator(const double &initialVal)
+Calculator::Calculator(const Number &initialVal) : currentTotal(0,0)
 {
 	currentTotal = initialVal;
 	initialStringStream.str(std::string());
@@ -19,12 +19,12 @@ Calculator::Calculator(const double &initialVal)
 	operationList.clear();
 }
 
-double Calculator::getCurrentTotal()
+Number Calculator::getCurrentTotal()
 {
 	return currentTotal;
 }
 
-double Calculator::addValue(const double &value)
+Number Calculator::addValue(const Number &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUM, value));
@@ -32,7 +32,7 @@ double Calculator::addValue(const double &value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::subtractValue(const double &value)
+Number Calculator::subtractValue(const Number &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value));
@@ -40,7 +40,7 @@ double Calculator::subtractValue(const double &value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::multiplyBy(const double &value)
+Number Calculator::multiplyBy(const Number &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value));
@@ -48,7 +48,7 @@ double Calculator::multiplyBy(const double &value)
 	return (currentTotal = operation->perform(currentTotal));
 }
 
-double Calculator::divideBy(const double &value)
+Number Calculator::divideBy(const Number &value)
 {
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::DIVISION, value));
@@ -59,14 +59,14 @@ double Calculator::divideBy(const double &value)
 	return currentTotal;
 }
 
-double Calculator::getPreviousTotal()
+Number Calculator::getPreviousTotal()
 {
 	if (operationList.empty())
 		return currentTotal;
 	return operationList.back().undo(currentTotal);
 }
 
-double Calculator::undo()
+Number Calculator::undo()
 {
 	if (operationList.empty())
 		return currentTotal;

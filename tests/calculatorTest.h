@@ -31,7 +31,7 @@ protected:
 	/*! \brief Creates a new calculator object and initializes it with the given value
 	\param[in] initialValue the initial calculator value
 	*/
-	static void createNewCalculator(const double &initialValue);
+	static void createNewCalculator(const Number &initialValue);
 
 	static Calculator* calc; /*!< A calculator object used in the tests. */
 };

@@ -3,7 +3,8 @@
 \brief This file holds the definitions for the Operation class.
  */
 
-Operation::Operation(const Operation::OPERATION_TYPE newOperationType, const double &newOperationValue)
+Operation::Operation(const Operation::OPERATION_TYPE newOperationType, const Number &newOperationValue)
+	: valueBeforeOperation(0.0), operationValue(0.0)
 {
 	valueBeforeOperation = 0.0;
 	operationValue = newOperationValue;
@@ -13,7 +14,7 @@ Operation::Operation(const Operation::OPERATION_TYPE newOperationType, const dou
 		operationType = newOperationType;	
 }
 
-double Operation::perform(const double &currentValue)
+Number Operation::perform(const Number &currentValue)
 {
 	valueBeforeOperation = currentValue;
 	switch (operationType)
@@ -33,12 +34,12 @@ double Operation::perform(const double &currentValue)
 	}
 }
 
-double Operation::undo(const double &currentValue)
+Number Operation::undo(const Number &currentValue)
 {
 	return valueBeforeOperation;
 }
 
-double Operation::performReverse(const double &currentValue)
+Number Operation::performReverse(const Number &currentValue)
 {
 	switch (operationType)
 	{
