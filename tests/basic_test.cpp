@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "calculatorTest.h"
 #include "operationTest.h"
+#include "numberTest.h"
 
 int main(int argc, char **argv)
 {
