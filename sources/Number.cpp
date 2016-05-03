@@ -35,18 +35,6 @@ Number operator+(Number summand1, const Number &summand2)
 	return summand1;
 }
 
-Number operator+(Number summand1, const double &summand2)
-{
-	summand1.realPart += summand2;
-	return summand1;
-}
-
-Number operator+(Number summand1, const int &summand2)
-{
-	summand1.realPart += summand2;
-	return summand1;
-}
-
 Number& Number::operator +=(const Number& summand)
 {
 	(*this) = (*this) + summand;
@@ -57,18 +45,6 @@ Number operator-(Number minuend, const Number &subtrahent)
 {
 	minuend.realPart -= subtrahent.realPart;
 	minuend.imaginaryPart -= subtrahent.imaginaryPart;
-	return minuend;
-}
-
-Number operator-(Number minuend, const double &subtrahent)
-{
-	minuend.realPart -= subtrahent;
-	return minuend;
-}
-
-Number operator-(Number minuend, const int &subtrahent)
-{
-	minuend.realPart -= subtrahent;
 	return minuend;
 }
 
