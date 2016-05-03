@@ -3,11 +3,11 @@
 TEST(NumberTest, givenValueNumberHoldsValue)
 {
 	Number num(2.1, 0.4);
-	ASSERT_EQ(2.1, num.getRealPart());
-	ASSERT_EQ(0.4, num.getImaginaryPart());
+	ASSERT_DOUBLE_EQ(2.1, num.getRealPart());
+	ASSERT_DOUBLE_EQ(0.4, num.getImaginaryPart());
 	num = Number(-0.211, -1.24);
-	ASSERT_EQ(-0.211, num.getRealPart());
-	ASSERT_EQ(-1.24, num.getImaginaryPart());
+	ASSERT_DOUBLE_EQ(-0.211, num.getRealPart());
+	ASSERT_DOUBLE_EQ(-1.24, num.getImaginaryPart());
 }
 
 TEST(NumberTest, givenDoubleCorrectlyConvertsToNumber)
