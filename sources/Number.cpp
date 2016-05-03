@@ -21,13 +21,6 @@ Number operator/(Number numerator, const Number & denominator)
 	return numerator;
 }
 
-bool operator!(const Number &arg)
-{
-	if (arg.getImaginaryPart() == 0.0)
-		return (arg.getRealPart() == 0.0);
-	return false;
-}
-
 bool operator<(const Number &one, const Number &other)
 {
 	if (other.getImaginaryPart() || one.getImaginaryPart())
@@ -82,16 +75,4 @@ Number operator^(const Number &one, int power)
 	if (power == 2)
 		return (one * one);
 	return one ^ (power - 1);
-}
-
-std::ostream& operator<<(std::ostream& outputStream, const Number& numberToStream)
-{
-	outputStream << numberToStream.getRealPart();
-	if (numberToStream.getImaginaryPart() != 0.0)
-	{
-		if (numberToStream.getImaginaryPart() > 0.0)
-			outputStream << "+";
-		outputStream << "i" << numberToStream.getImaginaryPart();
-	}
-	return outputStream;
 }

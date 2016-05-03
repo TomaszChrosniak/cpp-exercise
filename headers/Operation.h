@@ -8,8 +8,6 @@
 #include <iomanip>
 #include <limits>
 
-#include <Number.h>
-
 /*! \class Operation
  \brief A class that handles the operations performed by the calculator.
  */
@@ -27,8 +25,8 @@ public:
 
 private:
 	OPERATION_TYPE operationType; /*!< Holds the type of the operation performed by this instance of the Operation class. */
-	Number operationValue; /*!< Holds the operant for this operation. */
-	Number valueBeforeOperation; /*!< Holds the value before performing the operation. */
+	double operationValue; /*!< Holds the operant for this operation. */
+	double valueBeforeOperation; /*!< Holds the value before performing the operation. */
 								 
 	/*! \brief The default constructor made private.
 
@@ -44,7 +42,7 @@ public:
 	\param[in] newOperationType the type of the operation performed, should be one of the values from OPERATION_TYPE
 	\param[in] newOperandValue the operand value
 	*/
-	Operation(const OPERATION_TYPE newOperationType, const Number &newOperandValue);
+	Operation(const OPERATION_TYPE newOperationType, const double &newOperandValue);
 
 	/*! \brief Performs the operation on a value.
 	
@@ -55,7 +53,7 @@ public:
 	\param[in] currentValue the value on which the operation is to be performed
 	\return the calculated result
 	*/
-	Number perform(const Number &currentValue);
+	double perform(const double &currentValue);
 
 	/*! \brief Returns the initial value from before performing the operation.
 
@@ -63,7 +61,7 @@ public:
 	\param currentValue the value before undoing the operation; not used
 	\return the argument given when the operation was last performed
 	*/
-	Number undo(const Number &currentValue);
+	double undo(const double &currentValue);
 
 	/*! \brief Reverses the operation on the given argument.
 	
@@ -72,7 +70,7 @@ public:
 	\param currentValue the value on which the opposite operation is to be performed
 	\return the calculated result
 	*/
-	Number performReverse(const Number &currentValue);
+	double performReverse(const double &currentValue);
 
 	/*! \brief Returns the operation symbol and value.
 	
