@@ -59,7 +59,7 @@ public:
 	*/
 	double addValue(const double &value);
 
-	Number addValue(const Number &value);
+	Number addValueComplex(const Number &value);
 
 	/*! \brief Issues a subtraction operation with the specified operand.
 
@@ -70,7 +70,7 @@ public:
 	*/
 	double subtractValue(const double &value);
 
-	Number subtractValue(const Number &value);
+	Number subtractValueComplex(const Number &value);
 
 	/*! \brief Issues a multiplication operation with the specified operand.
 
@@ -81,7 +81,7 @@ public:
 	*/
 	double multiplyBy(const double &value);
 
-	Number multiplyBy(const Number &value);
+	Number multiplyByComplex(const Number &value);
 
 	/*! \brief Issues an addition operation with the specified operand.
 
@@ -93,7 +93,7 @@ public:
 	*/
 	double divideBy(const double &value);
 
-	Number divideBy(const Number &value);
+	Number divideByComplex(const Number &value);
 
 	/*! \brief Returns the total prior to performing the last operation.
 	It calls the same method as undo, but does not update the currentTotal, nor does it remove the operations from the operationsList vector.

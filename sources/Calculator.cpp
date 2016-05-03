@@ -89,3 +89,59 @@ void Calculator::clear()
 	initialStringStream << currentTotal << std::endl;
 	operationList.clear();
 }
+
+Number Calculator::getCurrentTotalComplex()
+{
+	return currentTotal;
+}
+
+Number Calculator::addValueComplex(const Number &value)
+{
+	Operation* operation;
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUM, value));
+	operation = &(operationList.back());
+	return (currentTotal = operation->perform(currentTotal));
+}
+
+Number Calculator::subtractValueComplex(const Number &value)
+{
+	Operation* operation;
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value));
+	operation = &(operationList.back());
+	return (currentTotal = operation->perform(currentTotal));
+}
+
+Number Calculator::multiplyByComplex(const Number &value)
+{
+	Operation* operation;
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value));
+	operation = &(operationList.back());
+	return (currentTotal = operation->perform(currentTotal));
+}
+
+Number Calculator::divideByComplex(const Number &value)
+{
+	Operation* operation;
+	operationList.push_back(Operation(Operation::OPERATION_TYPE::DIVISION, value));
+	operation = &(operationList.back());
+	currentTotal = operation->perform(currentTotal);
+	if (!value)
+		throw DivisionByZeroException();
+	return currentTotal;
+}
+
+Number Calculator::getPreviousTotalComplex()
+{
+	if (operationList.empty())
+		return currentTotal.getRealPart();
+	return operationList.back().undo(currentTotal);
+}
+
+Number Calculator::undoComplex()
+{
+	if (operationList.empty())
+		return currentTotal.getRealPart();
+	currentTotal = operationList.back().undo(currentTotal);
+	operationList.pop_back();
+	return currentTotal;
+}
