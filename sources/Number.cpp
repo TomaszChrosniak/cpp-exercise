@@ -129,19 +129,11 @@ Number operator*(Number factor1, const Number & factor2)
 Number operator/(Number numerator, const Number & denominator)
 {
 	Number reverseDenom(denominator), conjugatedDenom;
-	if (!numerator.getImaginaryPart() && !denominator.getImaginaryPart())
-	{
-		// THIS IS NECESSARY TO ELIMINATE APPROXIMATION ERRORS WHEN DEALING WITH REAL NUMBERS!
-		numerator.realPart = numerator.getRealPart() / denominator.getRealPart();
-	}
-	else
-	{
-		reverseDenom.imaginaryPart = -denominator.imaginaryPart;
-		conjugatedDenom = denominator * reverseDenom;
-		numerator = numerator * reverseDenom;
-		numerator.realPart /= conjugatedDenom.realPart;
-		numerator.imaginaryPart /= conjugatedDenom.realPart;
-	}
+	reverseDenom.imaginaryPart = -denominator.imaginaryPart;
+	conjugatedDenom = denominator * reverseDenom;
+	numerator = numerator * reverseDenom;
+	numerator.realPart /= conjugatedDenom.realPart;
+	numerator.imaginaryPart /= conjugatedDenom.realPart;
 	return numerator;
 }
 
