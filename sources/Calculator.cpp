@@ -3,17 +3,16 @@
 \brief This file holds the definitions for the Calculator class.
  */
 
-Calculator::Calculator()
+Calculator::Calculator() : currentTotal(0.0)
 {
-	currentTotal = 0.0;
 	initialStringStream.str(std::string());
 	initialStringStream << currentTotal << std::endl;
 	operationList.clear();
 }
 
-Calculator::Calculator(const double &initialVal)
+Calculator::Calculator(const Number &initialVal)
+	: currentTotal(initialVal)
 {
-	currentTotal = initialVal;
 	initialStringStream.str(std::string());
 	initialStringStream << currentTotal << std::endl;
 	operationList.clear();
@@ -21,7 +20,7 @@ Calculator::Calculator(const double &initialVal)
 
 double Calculator::getCurrentTotal()
 {
-	return currentTotal;
+	return currentTotal.getRealPart();
 }
 
 double Calculator::addValue(const double &value)
@@ -29,7 +28,7 @@ double Calculator::addValue(const double &value)
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUM, value));
 	operation = &(operationList.back());
-	return (currentTotal = operation->perform(currentTotal));
+	return (currentTotal = operation->perform(currentTotal)).getRealPart();
 }
 
 double Calculator::subtractValue(const double &value)
@@ -37,7 +36,7 @@ double Calculator::subtractValue(const double &value)
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::SUBTRACTION, value));
 	operation = &(operationList.back());
-	return (currentTotal = operation->perform(currentTotal));
+	return (currentTotal = operation->perform(currentTotal)).getRealPart();
 }
 
 double Calculator::multiplyBy(const double &value)
@@ -45,7 +44,7 @@ double Calculator::multiplyBy(const double &value)
 	Operation* operation;
 	operationList.push_back(Operation(Operation::OPERATION_TYPE::MULTIPLICATION, value));
 	operation = &(operationList.back());
-	return (currentTotal = operation->perform(currentTotal));
+	return (currentTotal = operation->perform(currentTotal)).getRealPart();
 }
 
 double Calculator::divideBy(const double &value)
@@ -56,23 +55,23 @@ double Calculator::divideBy(const double &value)
 	currentTotal = operation->perform(currentTotal);
 	if (!value)
 		throw DivisionByZeroException();
-	return currentTotal;
+	return currentTotal.getRealPart();
 }
 
 double Calculator::getPreviousTotal()
 {
 	if (operationList.empty())
-		return currentTotal;
-	return operationList.back().undo(currentTotal);
+		return currentTotal.getRealPart();
+	return operationList.back().undo(currentTotal).getRealPart();
 }
 
 double Calculator::undo()
 {
 	if (operationList.empty())
-		return currentTotal;
+		return currentTotal.getRealPart();
 	currentTotal = operationList.back().undo(currentTotal);
 	operationList.pop_back();
-	return currentTotal;
+	return currentTotal.getRealPart();
 }
 
 std::string Calculator::getOperationsString()

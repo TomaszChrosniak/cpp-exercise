@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 
 class Number
 {
@@ -12,113 +13,47 @@ private:
 	}
 
 public:
-	Number(const int &newRealPart)
-	{
-		realPart = newRealPart;
-		imaginaryPart = 0.0;
-	}
+	Number(const int &newRealPart);
+	Number(const double &newRealPart);
+	Number(const double &newRealPart, const double &newImaginaryPart);
 
-	Number(const double &newRealPart)
-	{
-		realPart = newRealPart;
-		imaginaryPart = 0.0;
-	}
+	double getRealPart() const;
+	double getImaginaryPart() const;
 
-	Number(const double &newRealPart, const double &newImaginaryPart)
-	{
-		realPart = newRealPart;
-		imaginaryPart = newImaginaryPart;
-	}
+	friend Number operator+(Number summand1, const Number &summand2);
+	friend Number operator+(Number summand1, const double &summand2);
+	friend Number operator+(Number summand1, const int &summand2);
+	Number& operator +=(const Number& summand);
 
-	double getRealPart() const
-	{
-		return realPart;
-	}
+	friend Number operator-(Number minuend, const Number &subtrahent);
+	friend Number operator-(Number minuend, const double &subtrahent);
+	friend Number operator-(Number minuend, const int &subtrahent);
+	Number& operator -=(const Number& subtrahent);
 
-	double getImaginaryPart() const
-	{
-		return imaginaryPart;
-	}
+	Number& operator++();
+	Number operator++(int);
 
-	friend Number operator+(Number summand1, const Number &summand2)
-	{
-		summand1.realPart += summand2.realPart;
-		summand1.imaginaryPart += summand2.imaginaryPart;
-		return summand1;
-	}
-
-	friend Number operator+(Number summand1, const double &summand2)
-	{
-		summand1.realPart += summand2;
-		return summand1;
-	}
-
-	friend Number operator+(Number summand1, const int &summand2)
-	{
-		summand1.realPart += summand2;
-		return summand1;
-	}
-
-	friend Number operator-(Number minuend, const Number &subtrahent)
-	{
-		minuend.realPart -= subtrahent.realPart;
-		minuend.imaginaryPart -= subtrahent.imaginaryPart;
-		return minuend;
-	}
-
-	friend Number operator-(Number minuend, const double &subtrahent)
-	{
-		minuend.realPart -= subtrahent;
-		return minuend;
-	}
-
-	friend Number operator-(Number minuend, const int &subtrahent)
-	{
-		minuend.realPart -= subtrahent;
-		return minuend;
-	}
-
-	Number& operator++()
-	{
-		realPart += 1.0;
-		return *this;
-	}
-
-	Number operator++(int)
-	{
-		Number returnNumber(*this);
-		++(*this);
-		return returnNumber;
-	}
-
-	Number& operator--()
-	{
-		realPart -= 1.0;
-		return *this;
-	}
-
-	Number operator--(int)
-	{
-		Number returnNumber(*this);
-		--(*this);
-		return returnNumber;
-	}
+	Number& operator--();
+	Number operator--(int);
 
 	friend Number operator*(Number factor1, const Number &factor2);
+	Number& operator *=(const Number& subtrahent);
 
 	friend Number operator/(Number numerator, const Number &denominator);
+	Number& operator /=(const Number& subtrahent);
 };
 
+bool operator!(const Number &arg);
+
 bool operator<(const Number &one, const Number &other);
-
-bool operator>(const Number &one, const Number &other);
-
 bool operator<=(const Number &one, const Number &other);
 
+bool operator>(const Number &one, const Number &other);
 bool operator>=(const Number &one, const Number &other);
 
 bool operator==(const Number &one, const Number &other);
-
 bool operator!=(const Number &one, const Number &other);
 
 Number operator^(const Number &one, int power);
+
+std::ostream& operator<<(std::ostream& os, const Number& dt);

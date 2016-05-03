@@ -16,7 +16,7 @@
 class Calculator
 {
 private:
-	double currentTotal; /*!< The current running total. */
+	Number currentTotal; /*!< The current running total. */
 
 	std::stringstream initialStringStream; /*!< The initial value set to the calculator held in a streamstream. */
 
@@ -39,13 +39,14 @@ public:
 	/*! \brief The default constructor. */
 	Calculator();
 	
-	/*! \brief The constructor that allows to set a different initial value. */
-	Calculator(const double &initialValue);
+	Calculator(const Number &initialValue);
 
 	/*! \brief Returns the current running total.
 	\return the current total
 	*/
 	double getCurrentTotal();
+
+	Number getCurrentTotalComplex();
 
 	/*! \brief Issues an addition operation with the specified operand.
 
@@ -58,6 +59,8 @@ public:
 	*/
 	double addValue(const double &value);
 
+	Number addValue(const Number &value);
+
 	/*! \brief Issues a subtraction operation with the specified operand.
 
 	This method acts similarly to addValue, but creates a new Operation object with Operation::OPERATION_TYPE::SUBTRACTION set as its operation type.
@@ -67,6 +70,8 @@ public:
 	*/
 	double subtractValue(const double &value);
 
+	Number subtractValue(const Number &value);
+
 	/*! \brief Issues a multiplication operation with the specified operand.
 
 	This method acts similarly to addValue, but creates a new Operation object with Operation::OPERATION_TYPE::MULTIPLICATION set as its operation type.
@@ -75,6 +80,8 @@ public:
 	\see Operation
 	*/
 	double multiplyBy(const double &value);
+
+	Number multiplyBy(const Number &value);
 
 	/*! \brief Issues an addition operation with the specified operand.
 
@@ -86,11 +93,15 @@ public:
 	*/
 	double divideBy(const double &value);
 
+	Number divideBy(const Number &value);
+
 	/*! \brief Returns the total prior to performing the last operation.
 	It calls the same method as undo, but does not update the currentTotal, nor does it remove the operations from the operationsList vector.
 	\return the total prior to performing the last operation
 	*/
 	double getPreviousTotal();
+
+	Number getPreviousTotalComplex();
 
 	/*! \brief Undoes the last performed operation.
 	This method calls undo on the last performed operation, which is held at the back of the operationList vector.
@@ -99,6 +110,8 @@ public:
 	\return the total after undoing the operation
 	*/
 	double undo();
+
+	Number undoComplex();
 
 	/*! \brief Returns the command history in string form.
 	This method calls the Operation::toString() methods of all the consecutive Operation objects held in the vector.
